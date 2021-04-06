@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { Link } from "react-router-dom";
 
 export const BoxerList = () => {
     const [boxing, setBoxing] = useState([]);
@@ -7,8 +8,10 @@ useEffect(() => {
 }, [])
     return <div>
         <h1>Boxing Table</h1>
-        {
-            boxing.map(el => <li key={el.id}>(el.name)</li>)
-        }
+        <ul>
+      {
+        boxing.map(el => <li key={el.id}><Link to={`/boxing/edit/${el.id}`}>{el.name}</Link></li>)
+      }
+    </ul>
     </div>
 }
