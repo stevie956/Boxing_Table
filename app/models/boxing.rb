@@ -1,3 +1,0 @@
-class Boxing < ApplicationRecord
-
-end
