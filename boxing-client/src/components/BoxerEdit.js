@@ -16,21 +16,36 @@ export const BoxerEdit = (props) => {
           .then(data => setBoxing(data))
       }, [params.id])
 
+
+    const handleChange = (e) => {
+        const newBoxer = {...boxing };
+        newBoxer[e.target.name] =e.target.value;
+        setBoxing(newBoxer);
+    };
+
+    const handleSubmit = (e) => {
+        props.submit(boxing);
+    };
+
     return <div>
         <h1>Entry Edit</h1>
-        <form>
+        <form onSubmit={handleSubmit}>
             <label>
                 Name:
-                <input value={boxing.name} />
+                <input value={boxing.name}
+                onChange={handleChange} />
             </label>
             <label>
                 Weight_id:
-                <input value={boxing.weight_id} />
+                <input value={boxing.weight_id}
+                onChange={handleChange} />
             </label>
             <label>
                 Country:
-                <input value={boxing.country} />
+                <input value={boxing.country}
+                onChange={handleChange} />
             </label>
+            <button type="submit">Edit Entry</button>
         </form>
     </div>
 }
